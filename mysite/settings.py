@@ -26,7 +26,7 @@ SECRET_KEY = 'r0x%0(na73x$b(6vxt760rnv0vs^+7%7rw9_8vtqv#w0y41pl1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['lit-spire-46760.herokuapp.com']
 
 
 # Application definition
