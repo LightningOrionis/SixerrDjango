@@ -8,7 +8,6 @@ https://docs.djangoproject.com/en/3.1/howto/deployment/wsgi/
 """
 
 import os
-from whitenoise.django import DjangoWhiteNoise
 
 from django.core.wsgi import get_wsgi_application
 
@@ -16,6 +15,6 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mysite.settings')
 
 application = get_wsgi_application()
 
-# Для обработки статических файлов на Heroku
-from whitenoise.django import DjangoWhiteNoise
-application = DjangoWhiteNoise(application)
+
+from django.contrib.staticfiles.handlers import StaticFilesHandler
+application = StaticFilesHandler(get_wsgi_application())
