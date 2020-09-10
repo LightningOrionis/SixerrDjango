@@ -26,7 +26,7 @@ SECRET_KEY = 'r0x%0(na73x$b(6vxt760rnv0vs^+7%7rw9_8vtqv#w0y41pl1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['lit-spire-46760.herokuapp.com']
+ALLOWED_HOSTS = ['lit-spire-46760.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -128,7 +128,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 # Для обработки статических файлов на Heroku
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
@@ -142,6 +142,6 @@ LOGOUT_REDIRECT_URL = '/'
 
 
 # Для баз данных на Heroku
-import dj_database_url
-db_from_env = dj_database_url.config()
-DATABASES['default'].update(db_from_env)
+#import dj_database_url
+#db_from_env = dj_database_url.config()
+#DATABASES['default'].update(db_from_env)
