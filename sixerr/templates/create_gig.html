@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  {% if error %}
+    <div style="margin-top:30px;" class="alert alert-warning alert-dissmissible" role="aler">
+      <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden></span>
+      </button>
+      <strong> Внимание! </strong> {{ error }}
+    </div>
+  {% endif %}
+
+  <div style="margin-top:30px;" class="panel panel-default">
+    <div class="panel-body">
+      <form method="POST" enctype="multipart/form-data" class="form-horizontal">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="" class="col-sm-2 control-label">Название:</label>
+          <div class="col-sm-10">
+            <textarea name="title" rows="3" class="form-control"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Категория:</label>
+          <div class="col-sm-10">
+            <select name="category" class="form-control">
+              <option value="GD"> Графика и Дизайн</option>
+              <option value="MR"> Маркетинг </option>
+              <option value="VD"> Видеообработка </option>
+              <option value="MA"> Музыка и Аудио</option>
+              <option value="IT"> ИТ </option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Описание:</label>
+          <div class="col-sm-10">
+            <textarea name="description" rows="5" class="form-control"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Цена($):</label>
+          <div class="col-sm-10">
+            <input type="number" class="form-control" name="price" value=5>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Фото:</label>
+          <div class="col-sm-10">
+            <input type="file" class="form-control" name="photo">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Статус:</label>
+          <div class="col-sm-10">
+            <select name="status" class="form-control">
+              <option value="true">Активно</option>
+              <option value="false"> Не активно </option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-10 col-sm-offset-2">
+            <button type="submit" class="btn btn-success"> Опубликовать </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

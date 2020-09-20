@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <h3 style="margin: 30px, 0px;"> Мои услуги </h3>
+  <div class="panel panel-default">
+    <table class="table table-bordered table-striped">
+      <thead class="bg-success">
+        <tr>
+            <th> Номер </th>
+            <th> Название </th>
+            <th> Цена </th>
+            <th> Статус </th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for gig in gigs %}
+          <tr>
+            <th> {{ forloop.counter }}</th>
+            <th> <a href="{% url 'edit_gig' gig.pk%}">{{ gig.title }}</a></th>
+            <th> ${{ gig.price }}</th>
+            <th> {% if gig.status%} Активен {% else %} Не Активен {% endif %}</th>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  {% if error %}
+    <div style="margin-top:30px;" class="alert alert-warning alert-dissmissible" role="aler">
+      <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden></span>
+      </button>
+      <strong> Внимание! </strong> {{ error }}
+    </div>
+  {% endif %}
+
+  <div style="margin-top:30px;" class="panel panel-default">
+    <div class="panel-body">
+      <form method="POST" enctype="multipart/form-data" class="form-horizontal">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="" class="col-sm-2 control-label">Название:</label>
+          <div class="col-sm-10">
+            <textarea name="title" rows="3" class="form-control"> {{ gig.title }}</textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Категория:</label>
+          <div class="col-sm-10">
+            <select name="category" class="form-control">
+              <option {% if gig.category == "GD" %} selected {%endif%} value="GD"> Графика и Дизайн</option>
+              <option {% if gig.category == "MR" %} selected {%endif%} value="MR"> Маркетинг </option>
+              <option {% if gig.category == "VD" %} selected {%endif%} value="VD"> Видеообработка </option>
+              <option {% if gig.category == "MA" %} selected {%endif%} value="MA"> Музыка и Аудио</option>
+              <option {% if gig.category == "IT" %} selected {%endif%} value="IT"> ИТ </option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Описание:</label>
+          <div class="col-sm-10">
+            <textarea name="description" rows="5" class="form-control"> {{ gig.description }}</textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Цена($):</label>
+          <div class="col-sm-10">
+            <input type="number" class="form-control" name="price" value="{{ gig.price }}">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Фото:</label>
+          <div class="col-sm-10">
+            <input type="file" class="form-control" name="photo">
+            <small> В данный момент: {{ gig.photo }}</small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Статус:</label>
+          <div class="col-sm-10">
+            <select name="status" class="form-control">
+              <option {% if gig.status %} selected {% endif %} value="1">Активно</option>
+              <option {% if not gig.status %} selected {% endif %} value=""> Не активно </option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-10 col-sm-offset-2">
+            <button type="submit" class="btn btn-success"> Обновить </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}
